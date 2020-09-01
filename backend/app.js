@@ -21,10 +21,12 @@ app.use((req, res, next) => {
 app.use('/api/series', (req, res, next) => {
     var indexs = JSON.parse(req.query.index);
     var result = [], tempValue = 1;
+    var addValue = -2, currentValue = 5;   
     if (indexs && Array.isArray(indexs) && !indexs.some(isNaN)) {
         var i;
         for(i = 0; i <= Math.max(...indexs); i++) {
-            result.push(tempValue += i*2);
+            result.push(currentValue += addValue);
+            addValue += 2;
         }
         console.log(result);
         const numbers = {
