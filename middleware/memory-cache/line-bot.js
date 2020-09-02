@@ -1,10 +1,10 @@
 const mcache = require('memory-cache');
 
-exports.getLineBotStatus = (req, res, next) => {
-    console.log('getLineBotStatus middleware caching....');
-    var a = JSON.parse(req.query.a);
-    console.log('params => ' + a);
-    let cachedBody = mcache.get(a);
+exports.getLineBotStatusCache = (req, res, next) => {
+    // console.log('getLineBotStatus middleware caching....');
+    // var a = JSON.parse(req.query.a);
+    // console.log('params => ' + a);
+    let cachedBody = mcache.get('line-status');
     // console.log(cachedBody);
     if(cachedBody) {
         console.log('Message => getLineBotStatus get cache success!')
