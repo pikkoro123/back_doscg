@@ -12,8 +12,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/images", express.static(path.join("images")));
-
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -27,6 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/images", express.static(path.join("images")));
 app.use("/api", routes);
 app.use("", routesLine);
 // app.use("/api/user", userRoutes);
