@@ -16,11 +16,12 @@ exports.getSeries = (req, res, next) => {
             "y": result[indexs[1]],
             "z": result[indexs[2]]
         }
-        series_cache.putCache(indexs, numbers);
-        return res.status(200).json({
+        const response = {
             message: 'Get Series Successfully!',
             results: numbers
-        });
+        };
+        series_cache.putCache(indexs, response);
+        return res.status(200).json(response);
     } else {
         res.status(404).json({message: 'There is something wrong!'});
     }
